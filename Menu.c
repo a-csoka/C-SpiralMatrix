@@ -1,3 +1,5 @@
+#include "Spiral.c"
+
 void menuHandler() {
     printf(
     "✨Spirál Mátrix Program✨\n"
@@ -8,6 +10,12 @@ void menuHandler() {
     "[5] - Mátrix megjelenítése\n"
     "[6] - Kilépés\n"
     );
+
+    // Spirál értékek
+    int Size;
+    int ToGo; // 0-Le, 1-Fel, 2-Balra, 3-Jobbra
+    int Direction; // 0-CW, 1-CCW
+    //-----------------
 
     int input = 0;
     while (input != 6){
@@ -22,6 +30,19 @@ void menuHandler() {
             while (getchar() != '\n');
             printf("Utasítás: ");
             scanf("%d", &input);
+        }
+
+        switch (input)
+        {
+        case 1:
+            printf("kezikönyv\n");
+            break;
+        case 2:
+            inputSpiralParameters(&Size, &ToGo, &Direction);
+            break;
+        case 5:
+
+            break;
         }
         
     }
