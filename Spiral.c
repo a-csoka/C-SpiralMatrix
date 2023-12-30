@@ -253,18 +253,4 @@ void displaySpiral(int** matrix, int Size){
         }
         printf("\n");
     }
-    /*
-    for (int y = 0; y < Size; y++)
-    {
-        for (int x = 0; x < Size; x++)
-        {
-            if (matrix[x][y] < 10){
-                printf(" %d ", matrix[x][y]);
-            }else{
-                printf("%d ", matrix[x][y]);
-            }
-        }
-        printf("\n");
-    }
-    */
 }
