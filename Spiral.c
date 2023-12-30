@@ -78,6 +78,7 @@ void nextStep(int* x, int* y,int* current, char* step, char steps[4]){
     }
 }
 
+//https://stackoverflow.com/questions/5201708/how-to-return-a-2d-array-from-a-function-in-c
 int** createArray(int m, int n)
 {
     int* values = calloc(m*n, sizeof(int));
@@ -229,16 +230,41 @@ int** generateMatrix(int Size, int ToGo, int Direction){
 }
 
 void displaySpiral(int** matrix, int Size){
-    for (int i = 0; i < Size; i++)
+    for (int x = 0; x < Size; x++){
+        int Length = 1;
+        for (int y = 0; y < Size; y++){
+            int currLen = floor(log10(abs(matrix[y][x]))) + 1;
+            if (Length < currLen)
+            {
+                Length = currLen;
+            }
+        }
+
+        for (int y = 0; y < Size; y++){
+            int currLen = floor(log10(abs(matrix[y][x]))) + 1;
+            char *resultString = (char *)malloc(Length + 1);
+            char *numba = (char *)malloc(currLen + 1);
+            for (int i = 0; i < Length-currLen; ++i) {
+                strcat(resultString, " ");
+            }
+            sprintf(numba, "%d", matrix[y][x]);
+            strcat(resultString, numba);
+            printf("%s ", resultString);
+        }
+        printf("\n");
+    }
+    /*
+    for (int y = 0; y < Size; y++)
     {
-        for (int j = 0; j < Size; j++)
+        for (int x = 0; x < Size; x++)
         {
-            if (matrix[j][i] < 10){
-                printf(" %d ", matrix[j][i]);
+            if (matrix[x][y] < 10){
+                printf(" %d ", matrix[x][y]);
             }else{
-                printf("%d ", matrix[j][i]);
+                printf("%d ", matrix[x][y]);
             }
         }
         printf("\n");
     }
+    */
 }

@@ -1,5 +1,3 @@
-#include "Spiral.c"
-
 void menuHandler() {
     printf(
     "✨Spirál Mátrix Program✨\n"
