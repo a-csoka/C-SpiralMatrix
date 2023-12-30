@@ -41,7 +41,7 @@ void menuHandler() {
             inputSpiralParameters(&Size, &ToGo, &Direction);
             break;
         case 5:
-
+            generateMatrix(Size, ToGo, Direction);
             break;
         }
         
