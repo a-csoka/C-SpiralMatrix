@@ -78,6 +78,17 @@ void nextStep(int* x, int* y,int* current, char* step, char steps[4]){
     }
 }
 
+int** createArray(int m, int n)
+{
+    int* values = calloc(m*n, sizeof(int));
+    int** rows = malloc(m*sizeof(int*));
+    for (int i=0; i<m; ++i)
+    {
+        rows[i] = values + i*n;
+    }
+    return rows;
+}
+
 int** generateMatrix(int Size, int ToGo, int Direction){
     char steps[4];
     int x;
@@ -159,7 +170,7 @@ int** generateMatrix(int Size, int ToGo, int Direction){
     }
     char step = steps[0];
 
-    int matrix[Size][Size] = {}; 
+    int** matrix = createArray(Size, Size); 
     int count = Size * Size;
     int current = 0;
 
@@ -214,5 +225,20 @@ int** generateMatrix(int Size, int ToGo, int Direction){
         }
     }
 
-    return **matrix;
+    return matrix;
+}
+
+void displaySpiral(int** matrix, int Size){
+    for (int i = 0; i < Size; i++)
+    {
+        for (int j = 0; j < Size; j++)
+        {
+            if (matrix[j][i] < 10){
+                printf(" %d ", matrix[j][i]);
+            }else{
+                printf("%d ", matrix[j][i]);
+            }
+        }
+        printf("\n");
+    }
 }

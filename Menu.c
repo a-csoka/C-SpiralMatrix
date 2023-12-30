@@ -12,9 +12,10 @@ void menuHandler() {
     );
 
     // Spirál értékek
-    int Size;
-    int ToGo; // 0-Le, 1-Fel, 2-Balra, 3-Jobbra
-    int Direction; // 0-CW, 1-CCW
+    int Size = -1;
+    int ToGo = -1; // 0-Le, 1-Fel, 2-Balra, 3-Jobbra
+    int Direction = -1; // 0-CW, 1-CCW
+    int** Spiral;
     //-----------------
 
     int input = 0;
@@ -39,9 +40,14 @@ void menuHandler() {
             break;
         case 2:
             inputSpiralParameters(&Size, &ToGo, &Direction);
+            Spiral = generateMatrix(Size, ToGo, Direction);
             break;
         case 5:
-            generateMatrix(Size, ToGo, Direction);
+            if(Size == -1 || ToGo == -1 || Direction == -1){
+                inputSpiralParameters(&Size, &ToGo, &Direction);
+                Spiral = generateMatrix(Size, ToGo, Direction);
+            }
+            displaySpiral(Spiral, Size);
             break;
         }
         
