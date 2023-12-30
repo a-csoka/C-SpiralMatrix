@@ -167,7 +167,77 @@ int** generateMatrix(int Size, int ToGo, int Direction){
             break;
         }
     }else{
-
+        switch (ToGo)
+        {
+        case 0: // Le
+            if (Size % 2 == 0){
+                steps[0] = 'D';
+                steps[1] = 'L';
+                steps[2] = 'U';
+                steps[3] = 'R';
+                x = Size-1;
+                y = 0;
+            }else{
+                steps[0] = 'U';
+                steps[1] = 'R';
+                steps[2] = 'D';
+                steps[3] = 'L';
+                x = 0;
+                y = Size-1;
+            }
+            break;
+        case 1: // Fel
+            if (Size % 2 == 0){
+                steps[0] = 'U';
+                steps[1] = 'R';
+                steps[2] = 'D';
+                steps[3] = 'L';
+                x = 0;
+                y = Size-1;
+            }else{
+                steps[0] = 'D';
+                steps[1] = 'L';
+                steps[2] = 'U';
+                steps[3] = 'R';
+                x = Size-1;
+                y = 0;
+            }
+            break;
+        case 2: // Balra
+            if (Size % 2 == 0){
+                steps[0] = 'L';
+                steps[1] = 'U';
+                steps[2] = 'R';
+                steps[3] = 'D';
+                x = Size-1;
+                y = Size-1;
+            }else{
+                steps[0] = 'R';
+                steps[1] = 'D';
+                steps[2] = 'L';
+                steps[3] = 'U';
+                x = 0;
+                y = 0;
+            }
+            break;
+        case 3: // Jobbra
+            if (Size % 2 == 0){
+                steps[0] = 'R';
+                steps[1] = 'D';
+                steps[2] = 'L';
+                steps[3] = 'U';
+                x = 0;
+                y = 0;
+            }else{
+                steps[0] = 'L';
+                steps[1] = 'U';
+                steps[2] = 'R';
+                steps[3] = 'D';
+                x = Size-1;
+                y = Size-1;
+            }
+            break;
+        }
     }
     char step = steps[0];
 
@@ -233,7 +303,7 @@ void displaySpiral(int** matrix, int Size){
     for (int x = 0; x < Size; x++){
         int Length = 1;
         for (int y = 0; y < Size; y++){
-            int currLen = floor(log10(abs(matrix[y][x]))) + 1;
+            int currLen = floor(log10(abs(matrix[y][x]))) + 1; // https://stackoverflow.com/questions/3068397/finding-the-length-of-an-integer-in-c
             if (Length < currLen)
             {
                 Length = currLen;
@@ -241,9 +311,9 @@ void displaySpiral(int** matrix, int Size){
         }
 
         for (int y = 0; y < Size; y++){
-            int currLen = floor(log10(abs(matrix[y][x]))) + 1;
-            char *resultString = (char *)malloc(Length + 1);
-            char *numba = (char *)malloc(currLen + 1);
+            int currLen = floor(log10(abs(matrix[y][x]))) + 1; // https://stackoverflow.com/questions/3068397/finding-the-length-of-an-integer-in-c
+            char *resultString = (char *)malloc(Length*sizeof(char));
+            char *numba = (char *)malloc(currLen*sizeof(char));
             for (int i = 0; i < Length-currLen; ++i) {
                 strcat(resultString, " ");
             }

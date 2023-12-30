@@ -36,6 +36,8 @@ void menuHandler() {
         case 1:
             printf("kezikönyv\n");
             break;
+        case 3:
+            
         case 2:
             inputSpiralParameters(&Size, &ToGo, &Direction);
             Spiral = generateMatrix(Size, ToGo, Direction);

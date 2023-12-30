@@ -5,6 +5,7 @@
 
 #include "Spiral.c"
 #include "Menu.c"
+#include "File.c"
 
 int main() {
     menuHandler();
