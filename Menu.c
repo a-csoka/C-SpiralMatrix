@@ -37,7 +37,12 @@ void menuHandler() {
             printf("kezikönyv\n");
             break;
         case 3:
-            
+            if(Size == -1 || ToGo == -1 || Direction == -1){
+                inputSpiralParameters(&Size, &ToGo, &Direction);
+                Spiral = generateMatrix(Size, ToGo, Direction);
+            }
+            spiralToTXT(Spiral, Size, ToGo, Direction);
+            break;
         case 2:
             inputSpiralParameters(&Size, &ToGo, &Direction);
             Spiral = generateMatrix(Size, ToGo, Direction);

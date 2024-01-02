@@ -4,8 +4,8 @@
 #include <string.h>
 
 #include "Spiral.c"
-#include "Menu.c"
 #include "File.c"
+#include "Menu.c"
 
 int main() {
     menuHandler();
