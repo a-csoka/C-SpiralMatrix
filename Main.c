@@ -1,13 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
-#include <string.h>
-#include <assert.h>
-#include <stdbool.h>
-
-#include "Spiral.c"
-#include "File.c"
-#include "Menu.c"
+#include "Header.h"
 
 int main() {
     menuHandler();

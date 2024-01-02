@@ -1,3 +1,5 @@
+#include "Header.h"
+
 void inputSpiralParameters(int* Size, int* ToGo, int* Direction){
     printf("Add meg a spirál méretét!(NxN)\nN=");
     while (scanf("%d", Size) == 0){

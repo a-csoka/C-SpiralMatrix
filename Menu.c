@@ -1,3 +1,5 @@
+#include "Header.h"
+
 void userManual(){
     printf(
         "✨[1] - Felhasználói kézikönyv✨\n"

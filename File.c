@@ -1,3 +1,5 @@
+#include "Header.h"y
+
 void spiralToTXT(int** matrix, int Size, int ToGo, int Direction){
     int nameLength = (floor(log10(abs(Size))) + 1)+(1); //Size + ToGo
     int numbaLen = (floor(log10(abs(Size))) + 1);
