@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
+#include <assert.h>
+#include <stdbool.h>
 
 #include "Spiral.c"
 #include "File.c"

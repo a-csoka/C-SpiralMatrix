@@ -54,8 +54,95 @@ void spiralToTXT(int** matrix, int Size, int ToGo, int Direction){
     }
 
     fclose(file);
+    printf("Fájl létrehozva a progam mappájában! (%s)\n", resultString);
 }
 
-void TXTToSpiral(int** matrix, int* Size, int* ToGo, int* Direction){
+//https://stackoverflow.com/a/47117431
+char *strremove(char *str, const char *sub) {
+    char *p, *q, *r;
+    if (*sub && (q = r = strstr(str, sub)) != NULL) {
+        size_t len = strlen(sub);
+        while ((r = strstr(p = r + len, sub)) != NULL) {
+            while (p < r)
+                *q++ = *p++;
+        }
+        while ((*q++ = *p++) != '\0')
+            continue;
+    }
+    return str;
+}
 
+int** TXTToSpiral(int** Spiral,int* Size, int* ToGo, int* Direction){
+    char fileName[19];
+
+    printf("Add meg a fájl nevét: ");
+    scanf("%s", &fileName);
+
+    FILE *file = fopen(fileName, "r");
+    if (file != NULL){
+        bool sSize = false;
+        bool sToGo = false;
+        bool sDirection = false;
+
+        strremove(fileName,"Spiral_");
+        strremove(fileName, ".txt");
+        char *nameToken = strtok(fileName, "_");
+        while (nameToken != NULL){
+            if (!sSize){
+                *Size = atoi(nameToken);
+                sSize = true;
+            }
+
+            if(nameToken[0] == 'L'){
+                *ToGo = 0;
+                sToGo = true;
+            }else if(nameToken[0] == 'F'){
+                *ToGo = 1;
+                sToGo = true;
+            }else if(nameToken[0] == 'B'){
+                *ToGo = 2;
+                sToGo = true;
+            }else if(nameToken[0] == 'J'){
+                *ToGo = 3;
+                sToGo = true;
+            }
+
+            if(nameToken[0] == 'C' && nameToken[1] == 'W'){
+                *Direction = 0;
+                sDirection = true;
+            }else{
+                *Direction = 1;
+                sDirection = true;
+            }
+
+            nameToken = strtok(NULL, "_");
+        }
+        if (sSize && sToGo && sDirection){
+            char * line = NULL;
+            size_t len = 0;
+
+            int** newSpiral = createArray(*Size, *Size);
+            int x = 0;
+            int y = 0;
+            
+
+            while (getline(&line, &len, file) != -1) {
+                char *token = strtok(line, " ");
+                while (token != NULL) {
+                    newSpiral[y][x] = atoi(token);
+                    ++x;
+                    token = strtok(NULL, " ");
+                }
+                x = 0;
+                ++y;
+            }
+            return newSpiral;
+        }else{
+            printf("Nem megfelelő fájlnév!\n");
+        }              
+        fclose(file);
+    }else{
+        printf("Hiba a fájl megnyitása során!\n");
+    }
+    return Spiral;
 }

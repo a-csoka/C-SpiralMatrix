@@ -1,14 +1,4 @@
 void menuHandler() {
-    printf(
-    "✨Spirál Mátrix Program✨\n"
-    "[1] - Felhasználói kézikönyv\n"
-    "[2] - Mátrix generálása\n"
-    "[3] - Jelenlegi mátrix mentése\n"
-    "[4] - Meglévő mátrix betöltése\n"
-    "[5] - Mátrix megjelenítése\n"
-    "[6] - Kilépés\n"
-    );
-
     // Spirál értékek
     int Size = -1;
     int ToGo = -1; // 0-Le, 1-Fel, 2-Balra, 3-Jobbra
@@ -18,6 +8,15 @@ void menuHandler() {
 
     int input = 0;
     while (input != 6){
+        printf(
+        "✨Spirál Mátrix Program✨\n"
+        "[1] - Felhasználói kézikönyv\n"
+        "[2] - Mátrix generálása\n"
+        "[3] - Jelenlegi mátrix mentése\n"
+        "[4] - Meglévő mátrix betöltése\n"
+        "[5] - Mátrix megjelenítése\n"
+        "[6] - Kilépés\n"
+        );
         printf("Utasítás: ");
         while (scanf("%d", &input) == 0){
             printf("Csak számot adhatsz meg!\n");
@@ -36,6 +35,10 @@ void menuHandler() {
         case 1:
             printf("kezikönyv\n");
             break;
+        case 2:
+            inputSpiralParameters(&Size, &ToGo, &Direction);
+            Spiral = generateMatrix(Size, ToGo, Direction);
+            break;
         case 3:
             if(Size == -1 || ToGo == -1 || Direction == -1){
                 inputSpiralParameters(&Size, &ToGo, &Direction);
@@ -43,9 +46,8 @@ void menuHandler() {
             }
             spiralToTXT(Spiral, Size, ToGo, Direction);
             break;
-        case 2:
-            inputSpiralParameters(&Size, &ToGo, &Direction);
-            Spiral = generateMatrix(Size, ToGo, Direction);
+        case 4:
+            Spiral = TXTToSpiral(Spiral, &Size, &ToGo, &Direction);
             break;
         case 5:
             if(Size == -1 || ToGo == -1 || Direction == -1){
