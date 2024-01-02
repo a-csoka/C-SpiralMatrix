@@ -1,3 +1,20 @@
+void userManual(){
+    printf(
+        "✨[1] - Felhasználói kézikönyv✨\n"
+        "Ezt olvasod...\n"
+        "✨[2] - Mátrix generálása✨\n"
+        "Itt a program megkérdezi, hogy mekkora mátrixot szeretnél, merről induljon és milyen irányba menjen. A mátrix maximum 20-as nagyságú lehet.\n"
+        "✨[3] - Jelenlegi mátrix mentése\n"
+        "Itt a jelenleg betöltött mátrixot fogja egy mappába menteni. A fájl mindig a program mappájába fog kerülni. A fájl neve a következő sablon szerint jön létre Spiral_*MÉRET*_*KEZDŐ IRÁNY*_*IRÁNY*.txt.\n"
+        "✨[4] - Meglévő mátrix betöltése✨\n"
+        "Váratlan fordulat, itt pedig a mentett mátrixokat fogja betölteni. A fájl nevét pontosan írd be a fájlformátummal együtt. A fájlnak muszáj követnie a név sablont, különben nem fogja betölteni a mátrixot.\n"
+        "✨[5] - Mátrix megjelenítése✨\n"
+        "Megmutatja hogy néz ki a mátrix a terminálban.\n"
+        "✨[6]- Kilépés✨\n"
+        "Kilép a programból és csókok.\n"
+    );
+}
+
 void menuHandler() {
     // Spirál értékek
     int Size = -1;
@@ -33,7 +50,7 @@ void menuHandler() {
         switch (input)
         {
         case 1:
-            printf("kezikönyv\n");
+            userManual();
             break;
         case 2:
             inputSpiralParameters(&Size, &ToGo, &Direction);

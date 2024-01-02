@@ -136,6 +136,7 @@ int** TXTToSpiral(int** Spiral,int* Size, int* ToGo, int* Direction){
                 x = 0;
                 ++y;
             }
+            printf("A spirál sikeresen betölve!\n");
             return newSpiral;
         }else{
             printf("Nem megfelelő fájlnév!\n");
